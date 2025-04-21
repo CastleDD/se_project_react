@@ -1,9 +1,9 @@
 import "./ItemModal.css";
 import exitX from "../../images/greyX.png";
 
-function ItemModal({ activeModal, onClose, card }) {
+function ItemModal({ onClose, card }) {
   return (
-    <div className={`modal ${activeModal === "preview" && "modal_opened"}`}>
+    <div className="modal modal_opened">
       <div className="modal__preview-content model__content_type_image">
         <button
           onClick={onClose}
@@ -12,7 +12,7 @@ function ItemModal({ activeModal, onClose, card }) {
         >
           <img src={exitX} alt="exit" />
         </button>
-        <img src={card.link} alt="" className="modal__image" />
+        <img src={card.link} alt={card.name} className="modal__image" />
         <div className="modal__footer">
           <h2 className="modal__caption">{card.name}</h2>
           <p className="modal__weather">Weather: {card.weather}</p>
