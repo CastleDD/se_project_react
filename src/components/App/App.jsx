@@ -47,7 +47,7 @@ function App() {
         );
         setCardToDelete(null);
         setIsConfirmModalOpen(false);
-        setActiveModal("");
+        closeActiveModal();
       })
       .catch(console.error);
   };
@@ -64,6 +64,27 @@ function App() {
   const closeActiveModal = () => {
     setActiveModal("");
   };
+
+  const handleEscClose = (e) => {
+    if (e.key === "Escape") {
+      if (isConfirmModalOpen) {
+        setIsConfirmModalOpen(false);
+      } else if (activeModal) {
+        closeActiveModal();
+        setSelectedCard(null);
+      }
+    }
+  };
+
+  useEffect(() => {
+    const shouldListen = activeModal || isConfirmModalOpen;
+    if (!shouldListen) return;
+
+    document.addEventListener("keydown", handleEscClose);
+    return () => {
+      document.removeEventListener("keydown", handleEscClose);
+    };
+  }, [activeModal, isConfirmModalOpen]);
 
   const handleAddItemModalSubmit = ({ name, imageUrl, weather }) => {
     addItem({ name, imageUrl, weather })

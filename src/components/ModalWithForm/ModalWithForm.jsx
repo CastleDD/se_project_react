@@ -10,8 +10,6 @@ function ModalWithForm({
   isOpen,
   onSubmit,
 }) {
-  // if (!isOpen) return null;
-
   return (
     <div className={`modal  ${isOpen ? "modal_opened" : ""}`}>
       <div className="modal__content">
