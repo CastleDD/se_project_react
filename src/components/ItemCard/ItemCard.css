@@ -25,3 +25,12 @@
   border-radius: 8px;
   cursor: pointer;
 }
+
+.card__like-btn {
+  background-color: transparent;
+  position: absolute;
+  top: 20px;
+  right: 80px;
+  border: none;
+  cursor: pointer;
+}

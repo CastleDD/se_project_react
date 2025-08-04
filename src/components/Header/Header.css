@@ -2,6 +2,7 @@
   display: flex;
   align-items: center;
   padding: 32px 0 28px;
+  justify-content: space-between;
 }
 
 .header__logo {
@@ -10,6 +11,19 @@
 
 .header__date-lo {
   margin-right: auto;
+}
+
+.header__auth-buttons {
+  display: flex;
+}
+
+.header__auth-buttons button {
+  border: none;
+  margin-left: 10px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  background-color: transparent;
 }
 
 .header__add-clothes-btn {
@@ -32,4 +46,11 @@
 
 .header__username {
   margin: 0;
+}
+
+.header__avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
 }
