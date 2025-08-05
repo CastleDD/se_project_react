@@ -14,12 +14,13 @@ import Footer from "../Footer/Footer";
 import { getWeather, filterWeatherData } from "../../utils/weatherApi";
 import { coordinates, APIkey } from "../../utils/constants";
 import CurrentTempUnitContext from "../../contexts/currentTempUnitContext";
-import AllModalsWithForm from "../AddItemModal/AddItemModal";
+import AddItemModal from "../AddItemModal/AddItemModal";
 import Profile from "../Profile/Profile";
 import { defaultClothingItems } from "../../utils/constants";
 import DeleteConfirmationModal from "../DeleteConfirmationModal/DeleteConfirmationModal";
 import { getItems, addItem, deleteItem } from "../../utils/api";
 import { register, login, checkToken } from "../../utils/auth";
+import AddItemModal from "../AddItemModal/AddItemModal";
 
 function App() {
   const [currentUser, setCurrentUser] = useState({});
@@ -263,25 +264,25 @@ function App() {
             </Routes>{" "}
             <Footer />{" "}
           </div>{" "}
-          <AllModalsWithForm
+          <AddItemModal
             isOpen={activeModal === "add-garment"}
             onClose={closeActiveModal}
             onAddItemModalSubmit={handleAddItemModalSubmit}
             mode="add"
           />{" "}
-          <AllModalsWithForm
+          <AddItemModal
             isOpen={activeModal === "register"}
             onClose={closeActiveModal}
             onRegister={handleRegister}
             mode="register"
           />{" "}
-          <AllModalsWithForm
+          <AddItemModal
             isOpen={activeModal === "login"}
             onClose={closeActiveModal}
             onLogin={handleLogin}
             mode="login"
           />{" "}
-          <AllModalsWithForm
+          <AddItemModal
             isOpen={activeModal === "editProfile"}
             onClose={closeActiveModal}
             onEditProfile={handleUpdateUser}

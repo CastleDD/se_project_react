@@ -3,7 +3,7 @@ import { useEffect, useState, useContext } from "react";
 import { useForm } from "../../hooks/useForm";
 import CurrentUserContext from "../../contexts/currentUserContext";
 
-export default function AllModalsWithForm({
+export default function AddItemModal({
   onClose,
   isOpen,
   onAddItemModalSubmit,
