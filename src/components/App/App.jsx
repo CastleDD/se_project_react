@@ -14,7 +14,7 @@ import Footer from "../Footer/Footer";
 import { getWeather, filterWeatherData } from "../../utils/weatherApi";
 import { coordinates, APIkey } from "../../utils/constants";
 import CurrentTempUnitContext from "../../contexts/currentTempUnitContext";
-import AllModalsWithForm from "../AllModalsWithForm/AllModalsWithForm";
+import AllModalsWithForm from "../AddItemModal/AddItemModal";
 import Profile from "../Profile/Profile";
 import { defaultClothingItems } from "../../utils/constants";
 import DeleteConfirmationModal from "../DeleteConfirmationModal/DeleteConfirmationModal";
