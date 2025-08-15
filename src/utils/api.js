@@ -41,7 +41,7 @@ function deleteItem(id, token) {
       "Content-Type": "application/json",
       authorization: `Bearer ${token}`,
     },
-  }).then((res) => (res.ok ? res.json() : Promise.reject("Delete failed")));
+  }).then(checkResponse);
 }
 
 function addCardLike(id, token) {

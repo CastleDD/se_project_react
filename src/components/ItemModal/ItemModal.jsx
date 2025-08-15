@@ -6,6 +6,7 @@ import CurrentUserContext from "../../contexts/currentUserContext";
 function ItemModal({ onClose, card, isOpen, onConfirmDelete }) {
   const currentUser = useContext(CurrentUserContext);
   const isOwn = card.owner === currentUser._id;
+  const isDefault = card.isDefault;
 
   return (
     <div className={`modal  ${isOpen ? "modal_opened" : ""}`}>
@@ -21,7 +22,7 @@ function ItemModal({ onClose, card, isOpen, onConfirmDelete }) {
         <div className="modal__footer">
           <div className="modal__container">
             <h2 className="modal__caption">{card.name}</h2>
-            {isOwn && (
+            {(isOwn || card.isDefault) && (
               <button
                 className="modal__delete-btn"
                 onClick={() => onConfirmDelete(card)}

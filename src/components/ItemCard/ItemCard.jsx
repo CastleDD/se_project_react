@@ -4,9 +4,11 @@ import "./ItemCard.css";
 import unheart from "../../images/unheart.png";
 import hearted from "../../images/hearted.png";
 
-function ItemCard({ item, onCardClick, onCardLike }) {
+function ItemCard({ item, onCardClick, onCardLike, onCardDelete }) {
   const currentUser = useContext(CurrentUserContext);
   const isLiked = item.likes.includes(currentUser._id);
+  const isOwn = item.owner === currentUser._id;
+  // const isDefault = item.isDefault;
 
   const handleCardClick = () => {
     onCardClick(item);
@@ -14,6 +16,10 @@ function ItemCard({ item, onCardClick, onCardLike }) {
 
   const handleCardLike = () => {
     onCardLike(item);
+  };
+
+  const handleCardDelete = () => {
+    onCardDelete(item);
   };
 
   return (
