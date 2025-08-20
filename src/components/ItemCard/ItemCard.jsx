@@ -4,11 +4,10 @@ import "./ItemCard.css";
 import unheart from "../../images/unheart.png";
 import hearted from "../../images/hearted.png";
 
-function ItemCard({ item, onCardClick, onCardLike, onCardDelete }) {
+function ItemCard({ item, onCardClick, onCardLike, onCardDelete, isLoggedIn }) {
   const currentUser = useContext(CurrentUserContext);
-  const isLiked = item.likes.includes(currentUser._id);
-  const isOwn = item.owner === currentUser._id;
-  // const isDefault = item.isDefault;
+  const isLiked = currentUser ? item.likes.includes(currentUser._id) : false;
+  // const isOwn = item.owner === currentUser._id;
 
   const handleCardClick = () => {
     onCardClick(item);
@@ -31,15 +30,17 @@ function ItemCard({ item, onCardClick, onCardLike, onCardDelete }) {
         src={item.imageUrl}
         alt={item.name}
       />
-      <button
-        className={`card__like-btn ${isLiked ? "card__like-btn_active" : ""}`}
-        onClick={handleCardLike}
-      >
-        <img
-          src={isLiked ? hearted : unheart}
-          alt={isLiked ? "liked" : "unliked"}
-        />
-      </button>
+      {isLoggedIn && (
+        <button
+          className={`card__like-btn ${isLiked ? "card__like-btn_active" : ""}`}
+          onClick={handleCardLike}
+        >
+          <img
+            src={isLiked ? hearted : unheart}
+            alt={isLiked ? "liked" : "unliked"}
+          />
+        </button>
+      )}
     </li>
   );
 }

@@ -20,6 +20,9 @@ import Profile from "../Profile/Profile";
 import DeleteConfirmationModal from "../DeleteConfirmationModal/DeleteConfirmationModal";
 import { getItems, addItem, deleteItem } from "../../utils/api";
 import AddItemModal from "../AddItemModal/AddItemModal";
+import EditProfileModal from "../EditProfileModal.jsx/EditProfileModal";
+import LoginModal from "../LoginModal/LoginModal";
+import RegisterModal from "../RegisterModal/RegisterModal";
 
 function App() {
   const [currentUser, setCurrentUser] = useState({});
@@ -225,7 +228,6 @@ function App() {
               onLoginClick={() => setActiveModal("login")}
               onRegisterClick={() => setActiveModal("register")}
               isLoggedIn={isLoggedIn}
-              currentUser={currentUser}
             />
             <Routes>
               <Route
@@ -236,6 +238,7 @@ function App() {
                     handleCardClick={handleCardClick}
                     handleCardLike={handleCardLike}
                     clothingItems={clothingItems}
+                    isLoggedIn={isLoggedIn}
                   />
                 }
               />
@@ -250,6 +253,7 @@ function App() {
                       onEditProfileClick={handleEditProfileClick}
                       onLogoutClick={handleLogout}
                       onCardLike={handleCardLike}
+                      isLoggedIn={isLoggedIn}
                     />
                   </ProtectedRoute>
                 }
@@ -263,23 +267,22 @@ function App() {
             onAddItemModalSubmit={handleAddItemModalSubmit}
             mode="add"
           />
-          <AddItemModal
+          <RegisterModal
             isOpen={activeModal === "register"}
             onClose={closeActiveModal}
             onRegister={handleRegister}
             mode="register"
           />
-          <AddItemModal
+          <LoginModal
             isOpen={activeModal === "login"}
             onClose={closeActiveModal}
             onLogin={handleLogin}
             mode="login"
           />
-          <AddItemModal
+          <EditProfileModal
             isOpen={activeModal === "editProfile"}
             onClose={closeActiveModal}
             onEditProfile={handleUpdateUser}
-            currentUser={currentUser}
             mode="editProfile"
           />
           <ItemModal
@@ -288,6 +291,7 @@ function App() {
             onClose={closeActiveModal}
             isOpen={activeModal === "preview"}
             onConfirmDelete={openConfirmationModal}
+            isLoggedIn={isLoggedIn}
           />
           <DeleteConfirmationModal
             isOpen={isConfirmModalOpen}
